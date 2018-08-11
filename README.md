@@ -12,10 +12,10 @@ Eye-movement event detection using random forest. Cite as:
 }
 ```
 
-##Running IRF code
+## Running IRF code
 IRF was developed using Python 2.7 programming language and number of packages for data manipulation and training machine learning algorithms. This section describes how to prepare required software, how to use IRF algorithm and how to train your own classifier.
 
-###1. Prepare python environment
+### 1. Prepare python environment
 An easy way of preparing your python environment is to use [Anaconda](https://www.anaconda.com/what-is-anaconda/) - an open source package management system and environment management system that runs on Windows, macOS and Linux. To install Anaconda follow the instructions provided in <https://www.anaconda.com/download/>, then open your terminal and type:
 
 ```sh
@@ -67,7 +67,7 @@ optional arguments:
   --save_csv            Save output as csv file
 ```
   
-###2. Parse eye-movement data
+### 2. Parse eye-movement data
 
 This package includes a hand-labeled eye-movement dataset, called `lookAtPoint_EL` (see in `./etdata/`). To parse this data using IRF, [download](https://doi.org/10.3758/s13428-017-0860-3) a pretrained model, unzip and place it in `./models/` directory and run:
 ```Shell
@@ -116,8 +116,8 @@ That means one first needs to convert the dataset to this format. Note that data
 ```
 Geometry also needs to be defined in `./util_lib/I2MC - Dev Version/I2MC_rz.m`. **Note that dimensions here are in cm!** After preparing your data run the IRF code in a similar way described above. 
 
-##Train your own classifier
-###1. Data
+## Train your own classifier
+### 1. Data
 To train your own classifier place your training data into `dataset/train` and your validation data into `dataset/val` directories. Note that `dataset` directory needs to contain `db_config.json` file that describes the geometry of the setup. Training and validation data needs to be in the structured numpy array format described above.
 
 You can use `./utils_lib/data_prep/augment.py` script to prepare `lookAtPoint_EL` dataset for training the IRF. Just run the script and it will augment data by resampling it to various sampling rates and will add noise to it. Furthermore the script will split data into the training/validation and testing sets. Remember to copy `db_config.json` to `lookAtPoint_EL/training/`.
@@ -126,7 +126,7 @@ You can use `./utils_lib/data_prep/augment.py` script to prepare `lookAtPoint_EL
 pip install numpy==1.11
 ```
 
-###2. Training
+### 2. Training
 In `config.json` you can adjust the training parameters:
 ```
 {
