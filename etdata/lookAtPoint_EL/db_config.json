@@ -1,0 +1,12 @@
+{
+    "load_kwargs": {
+        "source":"etdata"
+    },
+    "geom": {
+        "screen_width": 533.0,
+        "screen_height": 301.0,
+        "eye_distance": 565.0,
+        "display_width_pix": 1920.0,
+        "display_height_pix": 1080.0
+    }
+}
