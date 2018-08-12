@@ -69,7 +69,7 @@ optional arguments:
   
 ### 2. Parse eye-movement data
 
-This package includes a hand-labeled eye-movement dataset, called `lookAtPoint_EL` (see in `./etdata/`). To parse this data using IRF, [download](https://doi.org/10.3758/s13428-017-0860-3) a pretrained model, unzip and place it in `./models/` directory and run:
+This package includes a hand-labeled eye-movement dataset, called `lookAtPoint_EL` (see in `./etdata/`). To parse this data using IRF, [download](https://doi.org/10.5281/zenodo.1343920) a pretrained model, unzip and place it in `./models/` directory and run:
 ```Shell
 python run_irf.py irf_2018-03-26_20-46-41 etdata lookAtPoint_EL
 ```
@@ -91,17 +91,17 @@ Now run `python run_irf.py irf_2018-03-26_20-46-41 etdata lookAtPoint_EL` again.
 The internal data format used by IRF is a structured numpy array with a following format:
 ```
 dtype = np.dtype([
-	('t', np.float64),		#time in seconds
-	('x', np.float32),		#horizontal gaze direction in degrees
-	('y', np.float32), 		#vertical gaze direction in degrees
+	('t', np.float64),	#time in seconds
+	('x', np.float32),	#horizontal gaze direction in degrees
+	('y', np.float32), 	#vertical gaze direction in degrees
 	('status', np.bool),	#status flag. False means trackloss 
-	('evt', np.uint8)		#event label:
-								#0: Undefined
-								#1: Fixation
-								#2: Saccade
-								#3: Post-saccadic oscillation
-								#4: Smooth pursuit
-								#5: Blink
+	('evt', np.uint8)	#event label:
+					#0: Undefined
+					#1: Fixation
+					#2: Saccade
+					#3: Post-saccadic oscillation
+					#4: Smooth pursuit
+					#5: Blink
 ])
 ```
 That means one first needs to convert the dataset to this format. Note that dataset folder needs to have `db_config.json` file, that describes the geometry of the setup - physical screen dimensions in mm, eye distance in mm and screen resolution in pixels, for example:
@@ -121,7 +121,7 @@ Geometry also needs to be defined in `./util_lib/I2MC - Dev Version/I2MC_rz.m`. 
 To train your own classifier place your training data into `dataset/train` and your validation data into `dataset/val` directories. Note that `dataset` directory needs to contain `db_config.json` file that describes the geometry of the setup. Training and validation data needs to be in the structured numpy array format described above.
 
 You can use `./utils_lib/data_prep/augment.py` script to prepare `lookAtPoint_EL` dataset for training the IRF. Just run the script and it will augment data by resampling it to various sampling rates and will add noise to it. Furthermore the script will split data into the training/validation and testing sets. Remember to copy `db_config.json` to `lookAtPoint_EL/training/`.
-**Note that `augment.py` was developed using an older version of numpy, therefore you might need to replace you numpy instalation with version 1.11 by running: **
+** Note that `augment.py` was developed using an older version of numpy, therefore you might need to replace you numpy instalation with version 1.11 by running: **
 ```sh
 pip install numpy==1.11
 ```
@@ -131,15 +131,15 @@ In `config.json` you can adjust the training parameters:
 ```
 {
     "events": [1, 2, 3],	#event labels to use; only fixation (1), saccade (2) and pso (3) are tested
-    "n_trees": 32,			#number of trees to use
+    "n_trees": 32,		#number of trees to use
     "extr_kwargs": {		#feature extraction parameters
-        "w": 100,			#context size for calculating features; in ms
+        "w": 100,		#context size for calculating features; in ms
         "w_vel": 12,			
         "w_dir": 22,
-        "interp": false,		#not used
-        "print_et": false		#not used
+        "interp": false,	#not used
+        "print_et": false	#not used
     },
-    "features": [			#features to use
+    "features": [		#features to use
 	"fs",
 	"disp",
 	"vel",
