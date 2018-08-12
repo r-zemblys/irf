@@ -121,7 +121,7 @@ Geometry also needs to be defined in `./util_lib/I2MC - Dev Version/I2MC_rz.m`. 
 To train your own classifier place your training data into `dataset/train` and your validation data into `dataset/val` directories. Note that `dataset` directory needs to contain `db_config.json` file that describes the geometry of the setup. Training and validation data needs to be in the structured numpy array format described above.
 
 You can use `./utils_lib/data_prep/augment.py` script to prepare `lookAtPoint_EL` dataset for training the IRF. Just run the script and it will augment data by resampling it to various sampling rates and will add noise to it. Furthermore the script will split data into the training/validation and testing sets. Remember to copy `db_config.json` to `lookAtPoint_EL/training/`.
-** Note that `augment.py` was developed using an older version of numpy, therefore you might need to replace you numpy instalation with version 1.11 by running: **
+**Note that `augment.py` was developed using an older version of numpy, therefore you might need to replace you numpy instalation with version 1.11 by running:**
 ```sh
 pip install numpy==1.11
 ```
