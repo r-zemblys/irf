@@ -74,7 +74,9 @@ This package includes a hand-labeled eye-movement dataset, called `lookAtPoint_E
 python run_irf.py irf_2018-03-26_20-46-41 etdata lookAtPoint_EL
 ```
 
-You can also use custom `--output_dir` parameter if you like, otherwise output folder will be set to `./etdata/lookAtPoint_EL_irf`. Note that pretrained models were trained using this exact dataset.
+You can also use custom `--output_dir` parameter if you like, otherwise output folder will be set to `./etdata/lookAtPoint_EL_irf`. 
+
+**!!!** Note that pretrained models were trained using this exact dataset. Also note that only approximate saccade and blink events were manually coded for trial `lookAtPoint_EL_S3` and it was not used for training or testing classifier.
 
 After running the above command you will get messages like:
 
