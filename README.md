@@ -85,7 +85,7 @@ etdata/lookAtPoint_EL_irf/i2mc/lookAtPoint_EL_S1_i2mc.mat does not exist. Run i2
 etdata/lookAtPoint_EL_irf/i2mc/lookAtPoint_EL_S2_i2mc.mat does not exist. Run i2mc extractor first!
 ...
 ```
-One of the features (i2mc) requires third party software. Running IRF for the first time converts data into the format, that is required for I2MC the algorithm. Open `./util_lib/I2MC - Dev Version/I2MC_rz.m` in MATLAB, edit `folders.data ` to point to your output directory and run the code. It will extract and save i2mc features. Note that I2MC code uses random initiations to calculate data clusters and therefore each time you recalculate i2mc feature, it will be slightly different. Therefore if you care about reproducing your classification, use the same already extracted i2mc data.
+One of the features (i2mc) requires third party software. Running IRF for the first time converts data into the format, that is required for I2MC the algorithm. Open `./util_lib/I2MC-Dev/I2MC_rz.m` in MATLAB, edit `folders.data ` to point to your output directory and run the code. It will extract and save i2mc features. Note that I2MC code uses random initiations to calculate data clusters and therefore each time you recalculate i2mc feature, it will be slightly different. Therefore if you care about reproducing your classification, use the same already extracted i2mc data.
 
 Now run `python run_irf.py irf_2018-03-26_20-46-41 etdata lookAtPoint_EL` again. IRF will parse your data and save it as structured numpy arrays. It has also an option to save output in tab delimited text format: just add parameter `--save_csv` when running IRF.
 
@@ -116,7 +116,7 @@ That means one first needs to convert the dataset to this format. Note that data
         "display_height_pix": 1080.0
     }
 ```
-Geometry also needs to be defined in `./util_lib/I2MC - Dev Version/I2MC_rz.m`. **Note that dimensions here are in cm!** After preparing your data run the IRF code in a similar way described above. 
+Geometry also needs to be defined in `./util_lib/I2MC-Dev/I2MC_rz.m`. **Note that dimensions here are in cm!** After preparing your data run the IRF code in a similar way described above. 
 
 ## Train your own classifier
 ### 1. Data
@@ -163,4 +163,4 @@ Now run:
 ```
 python run_training.py etdata/lookAtPoint_EL training
 ```
-This will perform feature extraction, train the IRF classifier and save it to the `./models/irf_datetime` directory. Note that the training script will stop if the `i2mc` feature is used, in case of which you will need to run `./util_lib/I2MC - Dev Version/I2MC_rz.m` before actually training the classifier. After i2mc is extracted, rerun the training script one more time.
+This will perform feature extraction, train the IRF classifier and save it to the `./models/irf_datetime` directory. Note that the training script will stop if the `i2mc` feature is used, in case of which you will need to run `./util_lib/I2MC-Dev/I2MC_rz.m` before actually training the classifier. After i2mc is extracted, rerun the training script one more time.
