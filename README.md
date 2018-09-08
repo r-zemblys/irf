@@ -11,7 +11,7 @@ Eye-movement event detection using random forest. Cite as:
   year={2018},
 }
 ```
-
+Read also `./doc/IRF_replication_report.pdf` for more information on the dataset and changes made in the post-processing routine.
 ## Running IRF code
 IRF was developed using Python 2.7 programming language and number of packages for data manipulation and training machine learning algorithms. This section describes how to prepare required software, how to use IRF algorithm and how to train your own classifier.
 
