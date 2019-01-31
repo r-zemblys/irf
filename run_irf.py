@@ -111,7 +111,7 @@ for fpath in tqdm(FILES):
     irf_features, pred_mask = extractFeatures(etdata, **config['extr_kwargs'])
     if not(len(irf_features)):
         with open(fpath_log, 'a') as f:
-            f.write('EMPTY:\t%s\n'%fpath.replace(ROOT, ''))
+            f.write('EMPTY:\t%s\n'%fpath.replace(ROOT_OUTPUT, ''))
         continue
 
     #select required features, transform to matrix and predict
