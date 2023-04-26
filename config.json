@@ -2,7 +2,7 @@
     "load_kwargs": {
         "source":"etdata"
     },
-    "events": [1, 2, 3],
+    "events": [1, 2],
     "n_trees": 32,
     "extr_kwargs": {
         "w": 100,
@@ -12,7 +12,6 @@
         "print_et": false
     },
     "features": [
-	"fs",
 	"disp",
 	"vel",
 	"acc",
@@ -23,14 +22,12 @@
 	"bcea",
 	"rms-diff",
 	"std-diff",
-	"bcea-diff",
-	"rayleightest",
-	"i2mc"
+	"bcea-diff"
     ],
     "pp_kwargs": {
         "thres_id":75.0,
-        "thres_ifa":0.2, 
-        "thres_ifi":75.0,
+        "thres_ifa":2,
+        "thres_ifi":400.0,
         "thres_sd_s":3, 
         "thres_pd":3,
         "thres_isi": 25.0, 

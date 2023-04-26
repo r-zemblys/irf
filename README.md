@@ -12,32 +12,24 @@ Eye-movement event detection using random forest. Cite as:
 }
 ```
 Read also `./doc/IRF_replication_report.pdf` for more information on the dataset and changes made in the post-processing routine.
+
+## Important
+Code in this branch was refactored and updated to work with `Python 3.8` and was used to train model for `TBD`. Model therefore detects only fixations and saccades but not PSOs.
+
 ## Running IRF code
-IRF was developed using Python 2.7 programming language and number of packages for data manipulation and training machine learning algorithms. This section describes how to prepare required software, how to use IRF algorithm and how to train your own classifier.
+IRF was originally developed using Python 2.7 programming language and number of packages for data manipulation and training machine learning algorithms. This section describes how to prepare required software, how to use IRF algorithm and how to train your own classifier.
 
 ### 1. Prepare python environment
 An easy way of preparing your python environment is to use [Anaconda](https://www.anaconda.com/what-is-anaconda/) - an open source package management system and environment management system that runs on Windows, macOS and Linux. To install Anaconda follow the instructions provided in <https://www.anaconda.com/download/>, then open your terminal and type:
 
 ```sh
-conda create --name irf python=2.7
+conda create --name irf python=3.8
 source activate irf
 ```
 The next step is to install all required python libraries. Run the following commands in your terminal window:
 
 ```sh
-pip install tqdm
-pip install parse
-pip install numpy
-pip install scipy
-pip install pandas
-pip install matplotlib
-pip install astropy
-pip install scikit-learn
-```
-
-Note that if you want to use a pretrained classifier that comes with this code, use:
-```sh
-pip install scikit-learn==0.17.1
+pip install -r requirements.txt
 ```
 
 To check if your environment is prepared correctly, run:
@@ -123,10 +115,6 @@ Geometry also needs to be defined in `./util_lib/I2MC-Dev/I2MC_rz.m`. **Note tha
 To train your own classifier place your training data into `dataset/train` and your validation data into `dataset/val` directories. Note that `dataset` directory needs to contain `db_config.json` file that describes the geometry of the setup. Training and validation data needs to be in the structured numpy array format described above.
 
 You can use `./utils_lib/data_prep/augment.py` script to prepare `lookAtPoint_EL` dataset for training the IRF. Just run the script and it will augment data by resampling it to various sampling rates and will add noise to it. Furthermore the script will split data into the training/validation and testing sets. Remember to copy `db_config.json` to `lookAtPoint_EL/training/`.
-**Note that `augment.py` was developed using an older version of numpy, therefore you might need to replace you numpy instalation with version 1.11 by running:**
-```sh
-pip install numpy==1.11
-```
 
 ### 2. Training
 In `config.json` you can adjust the training parameters:
